@@ -1,1 +1,1 @@
-A simple deep learning framework in pure Python.
+A simple deep learning framework.

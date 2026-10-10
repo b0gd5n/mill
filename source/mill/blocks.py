@@ -6,7 +6,7 @@ class Dense:
         self.outputs = outputs
 
         self.weights = Parameter(values=distributor.generate(inputs=inputs, outputs=outputs))
-        self.biases = Parameter(values=[])
+        self.biases = Parameter(values=[], regularized=False)
 
         self.last_inputs = []
 
@@ -94,5 +94,51 @@ class RectifiedLinearUnit:
                     output[batch].append(tensor[batch][value])
                 else:
                     output[batch].append(0)
+
+        return output
+
+class InvertedDropout:
+    def __init__(self, generator, probability=0.5):
+        self.generator = generator
+        self.probability = probability
+
+        self.last_masks = []
+
+    def forward(self, tensor, mode='inference'):
+        if mode != 'training' or self.probability == 0:
+            return tensor
+
+        mask = []
+        output = []
+
+        for batch in range(len(tensor)):
+            mask.append([])
+            output.append([])
+
+            for value in range(len(tensor[batch])):
+                if self.generator.generate(minimal_value=0, maximal_value=1) < self.probability:
+                    mask[batch].append(0)
+                else:
+                    mask[batch].append(1 / (1 - self.probability))
+
+                output[batch].append(tensor[batch][value] * mask[batch][value])
+
+        self.last_masks.append(mask)
+
+        return output
+
+    def backward(self, tensor):
+        if self.probability == 0:
+            return tensor
+
+        last_mask = self.last_masks.pop()
+
+        output = []
+
+        for batch in range(len(tensor)):
+            output.append([])
+
+            for value in range(len(tensor[batch])):
+                output[batch].append(tensor[batch][value] * last_mask[batch][value])
 
         return output

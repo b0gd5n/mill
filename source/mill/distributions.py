@@ -1,4 +1,3 @@
-
 class Random:
     def __init__(self, generator, minimal_value=-0.5, maximal_value=0.5):
         self.generator = generator

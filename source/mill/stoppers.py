@@ -1,4 +1,3 @@
-
 class ValidationLossEarlyStopping:
     def __init__(self, model, evaluator, patience=8, minimum_improvement=0):
         self.model = model

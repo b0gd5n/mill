@@ -1,4 +1,3 @@
-
 class LinearCongruentialGenerator:
     def __init__(self, seed=42):
         self.seed = seed

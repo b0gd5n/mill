@@ -1,4 +1,3 @@
-
 class MeanSquaredError:
     def evaluate(self, predictions, targets):
         summand = 0

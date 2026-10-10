@@ -4,13 +4,16 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "mill-dl"
-version = "0.1.0"
-description = "A simple deep learning framework in pure Python."
+dynamic = ["version"]
+description = "A simple deep learning framework."
 readme = "README.md"
 license = { file = "LICENSE" }
 authors = [{ name = "Bohdan Karpenko" }]
 requires-python = ">=3.8"
 dependencies = []
+
+[tool.setuptools.dynamic]
+version = { attr = "mill.__version__" }
 
 [tool.setuptools.packages.find]
 where = ["source"]

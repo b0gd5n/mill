@@ -1,7 +1,8 @@
-
 class Parameter:
-    def __init__(self, values):
+    def __init__(self, values, regularized=True):
         self.values = values
+        self.regularized = regularized
+        
         self.gradients = []
 
         for value in range(len(values)):
