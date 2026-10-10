@@ -1,2 +1,1 @@
-# mill
-A simple deep learning framework.
+A simple deep learning framework in pure Python.
