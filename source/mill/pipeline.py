@@ -31,8 +31,20 @@ class Sequential:
 
         return parameters
 
+    def buffers(self):
+        buffers = []
+
+        for block in range(len(self.blocks)):
+            if hasattr(self.blocks[block], 'buffers'):
+                block_buffers = self.blocks[block].buffers()
+
+                for buffer in range(len(block_buffers)):
+                    buffers.append(block_buffers[buffer])
+
+        return buffers
+
     def save(self, path='model.txt'):
-        parameters = self.parameters()
+        parameters = self.parameters() + self.buffers()
 
         with open(path, 'w') as file:
             for parameter in range(len(parameters)):
@@ -50,7 +62,7 @@ class Sequential:
         with open(path, 'r') as file:
             lines = file.read().split('\n')
 
-        parameters = self.parameters()
+        parameters = self.parameters() + self.buffers()
 
         for parameter in range(len(parameters)):
             numbers = lines[parameter].split()

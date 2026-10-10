@@ -8,7 +8,7 @@ class MeanSquaredError:
 
         return summand / (len(predictions) * len(predictions[0]))
 
-    def backward(self, predictions, targets):
+    def derivative(self, predictions, targets):
         output = []
 
         for batch in range(len(predictions)):

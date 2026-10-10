@@ -28,7 +28,7 @@ class ValidationLossEarlyStopping:
         return self.epochs_without_improvement >= self.patience
 
     def remember(self):
-        parameters = self.model.parameters()
+        parameters = self.model.parameters() + self.model.buffers()
 
         self.best_parameters = []
 
@@ -39,7 +39,7 @@ class ValidationLossEarlyStopping:
                 self.best_parameters[parameter].append(parameters[parameter].values[value])
 
     def restore(self):
-        parameters = self.model.parameters()
+        parameters = self.model.parameters() + self.model.buffers()
 
         for parameter in range(len(parameters)):
             for value in range(len(parameters[parameter].values)):
