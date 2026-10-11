@@ -9,7 +9,7 @@ from .gradient_penalties import Lasso, Ridge
 from .learning_rate_schedulers import Cosine
 from .learning_early_stoppers import ValidationLossEarlyStopping
 
-__version__ = '0.4.1'
+__version__ = '0.4.2'
 
 __all__ = [
     'Parameter',
