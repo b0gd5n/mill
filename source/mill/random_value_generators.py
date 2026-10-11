@@ -5,7 +5,7 @@ class LinearCongruentialGenerator:
 
         self.usages = 0
 
-    def generate(self, minimal_value, maximal_value):
+    def get_uniform_value(self, minimal_value, maximal_value):
         self.state = (1664525 * self.state + 1013904223) % 4294967296
 
         self.usages += 1

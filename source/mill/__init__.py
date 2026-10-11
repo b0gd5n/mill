@@ -1,15 +1,15 @@
-from .parameters import Parameter
-from .blocks import Dense, InvertedDropout, RectifiedLinearUnit, LayerNormalization, BatchNormalization, Residual
-from .distributions import Random
-from .generators import LinearCongruentialGenerator
-from .evaluators import MeanSquaredError
-from .updaters import StochasticGradientDescent
-from .pipeline import Sequential
-from .penalties import Lasso, Ridge
-from .schedulers import Cosine
-from .stoppers import ValidationLossEarlyStopping
+from .model_parameters import Parameter
+from .model_blocks import Dense, InvertedDropout, RectifiedLinearUnit, LayerNormalization, BatchNormalization, Residual
+from .blocks_distributors import Uniform, Normal
+from .random_value_generators import LinearCongruentialGenerator
+from .model_evaluators import MeanSquaredError
+from .model_updaters import StochasticGradientDescent
+from .model_pipeline import Model
+from .gradient_penalties import Lasso, Ridge
+from .learning_rate_schedulers import Cosine
+from .learning_early_stoppers import ValidationLossEarlyStopping
 
-__version__ = '0.2.0'
+__version__ = '0.3.0'
 
 __all__ = [
     'Parameter',
@@ -19,11 +19,12 @@ __all__ = [
     'LayerNormalization',
     'BatchNormalization',
     'Residual',
-    'Random',
+    'Uniform',
+    'Normal',
     'LinearCongruentialGenerator',
     'MeanSquaredError',
     'StochasticGradientDescent',
-    'Sequential',
+    'Model',
     'Lasso',
     'Ridge',
     'Cosine',
