@@ -16,7 +16,7 @@ class MeanSquaredError:
 
         for value in range(len(predictions_tensor)):
             if isinstance(predictions_tensor[value], list):
-                summand += self.sum_squared_errors(predictions_tensor=predictions_tensor[value], targets_tensor=targets_tensor[value])
+                summand += self.summmarise_squared_errors(predictions_tensor=predictions_tensor[value], targets_tensor=targets_tensor[value])
             else:
                 summand += (predictions_tensor[value] - targets_tensor[value]) ** 2
 

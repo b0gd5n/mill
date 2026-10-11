@@ -9,15 +9,15 @@ from .gradient_penalties import Lasso, Ridge
 from .learning_rate_schedulers import Cosine
 from .learning_early_stoppers import ValidationLossEarlyStopping
 
-__version__ = '0.4.2'
+__version__ = '0.4.3'
 
 __all__ = [
     'Parameter',
     'Dense',
     'InvertedDropout',
     'RectifiedLinearUnit',
-    'LayerNormalization',
-    'BatchNormalization',
+    'LayerNormalisation',
+    'BatchNormalisation',
     'Residual',
     'Uniform',
     'Normal',
