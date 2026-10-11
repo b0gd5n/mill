@@ -3,7 +3,7 @@ class MeanSquaredError:
         self.model = model
 
     def get_loss(self, predictions_tensor, targets_tensor):
-        return self.sum_squared_errors(predictions_tensor=predictions_tensor, targets_tensor=targets_tensor) / self.count_values(tensor=predictions_tensor)
+        return self.summmarise_squared_errors(predictions_tensor=predictions_tensor, targets_tensor=targets_tensor) / self.count_values(tensor=predictions_tensor)
 
     def get_validation_loss(self, inputs_tensor, targets_tensor):
         return self.get_loss(predictions_tensor=self.model.predict_tensor(inputs_tensor=inputs_tensor, mode='inference'), targets_tensor=targets_tensor)
